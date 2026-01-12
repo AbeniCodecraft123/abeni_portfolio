@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ project.project_name }} | AbeniCodeCraft</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      color: #fff;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ===== VIDEO BACKGROUND ===== */
+    .video-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -2;
+    }
+
+    .video-bg video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Dark overlay */
+    .video-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.65);
+      z-index: -1;
+    }
+
+    /* ===== CONTENT ===== */
+    .container {
+      max-width: 900px;
+      margin: 70px auto;
+      padding: 30px;
+      background: rgba(15,15,15,0.85);
+      border-radius: 12px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.6);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 2.2em;
+    }
+
+    .overview {
+      text-align: center;
+      color: #ccc;
+      margin-bottom: 35px;
+      font-size: 15px;
+    }
+
+    /* ===== IMAGES ===== */
+    .project-images {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+
+    .project-images img {
+      width: 270px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 2px solid rgba(255,255,255,0.3);
+      transition: 0.3s ease;
+    }
+
+    .project-images img:hover {
+      transform: scale(1.05);
+      border-color: #fff;
+    }
+
+    /* ===== DETAILS ===== */
+    .details {
+      background: rgba(25,25,25,0.9);
+      padding: 25px;
+      border-radius: 10px;
+    }
+
+    .details h3 {
+      margin-top: 20px;
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+
+    .details p {
+      color: #ddd;
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    /* ===== LINK ===== */
+    .project-link a {
+      color: #00aaff;
+      text-decoration: none;
+      word-break: break-word;
+    }
+
+    .project-link a:hover {
+      text-decoration: underline;
+    }
+
+    /* ===== ACTIONS ===== */
+    .actions {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+    }
+
+    .actions a {
+      text-decoration: none;
+      padding: 10px 22px;
+      background: #111;
+      color: #fff;
+      border-radius: 6px;
+      transition: 0.3s;
+    }
+
+    .actions a:hover {
+      background: #fff;
+      color: #000;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        margin: 40px 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ===== VIDEO BACKGROUND ===== -->
+<div class="video-bg">
+  <video autoplay muted loop playsinline>
+    <source src="static/video/vertical-video-view-plane-window-snow-mountains-winter-ski-resort-holiday-vacation_3437532.htm" type=" video/mp4">
+  </video>
+</div>
+
+<div class="video-overlay"></div>
+
+<!-- ===== CONTENT ===== -->
+<div class="container">
+
+  <h1>{{ project.project_name }}</h1>
+  <p class="overview">{{ project.project_overview }}</p>
+
+  <div class="project-images">
+    {% if project.project_image1 %}
+      <img src="{{ url_for('static', filename='uploads/' + project.project_image1) }}">
+    {% endif %}
+    {% if project.project_image2 %}
+      <img src="{{ url_for('static', filename='uploads/' + project.project_image2) }}">
+    {% endif %}
+    {% if project.project_image3 %}
+      <img src="{{ url_for('static', filename='uploads/' + project.project_image3) }}">
+    {% endif %}
+  </div>
+
+  <div class="details">
+    <h3>Purpose</h3>
+    <p>{{ project.purpose_of_project }}</p>
+
+    <h3>Features</h3>
+    <p>{{ project.features }}</p>
+
+    <h3>Tools Used</h3>
+    <p>{{ project.tools_used }}</p>
+
+    <h3>Dashboard</h3>
+    <p>{{ project.dashboard }}</p>
+
+    <h3>Authentication System</h3>
+    <p>{{ project.authentication_system }}</p>
+
+    <h3>Functionality</h3>
+    <p>{{ project.project_functionality }}</p>
+
+    <h3>Deployment</h3>
+    <p>{{ project.deployment }}</p>
+
+    <h3>Project Link</h3>
+    <p class="project-link">
+      <a href="{{ project.project_link }}" target="_blank">
+        {{ project.project_link }}
+      </a>
+    </p>
+  </div>
+
+</div>
+
+</body>
+</html>
